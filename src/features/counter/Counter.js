@@ -1,8 +1,10 @@
 import { useSelector, useDispatch } from "react-redux"
 
 //import action creater functions
-import { increment, decrement } from "./counterSlice"
+import { increment, decrement, increaseByAmount} from "./counterSlice"
 
+
+import { useState } from "react"
 
 export default function Counter() {
 
@@ -11,6 +13,8 @@ export default function Counter() {
     //function to send action to reducer
     const dispatch = useDispatch()
 
+    const [amount, setAmount] = useState(0)
+
     return (
         <div>
             <h1>Counter</h1>
@@ -18,6 +22,12 @@ export default function Counter() {
 
             <button onClick={()=> dispatch(increment())}>Increase</button>
             <button onClick={()=> dispatch(decrement())}>Decrease</button>
+
+            <input
+                type='number'
+                value={amount}
+                onChange={(e)=> setAmount(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && dispatch(increaseByAmount(amount))}/>
         </div>
     )
 }
