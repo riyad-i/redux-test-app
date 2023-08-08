@@ -9,8 +9,11 @@ export const todosSlice = createSlice({
         {id: '2', text: 'Learn Redux', completed: false}
     ],
     reducers: {
-        addTodo: (state) => {
-
+        addTodo: (state, action) => {
+            const {payload} = action
+            state.push({id : payload,
+                text:payload,
+                completed: false})
         }
 
     }
