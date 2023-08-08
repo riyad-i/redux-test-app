@@ -11,16 +11,21 @@ export default function ToDoList() {
 
     const [input, setInput] = useState('')
 
+    const handleClick = (e) => {
+        e.preventDefault()
+        dispatch(addTodo(input))
+        setInput('')
+    }
+
+
     return(
         <>
             <h1>ToDoList</h1>
             <ul>{todos.map(todo => <li key={todo.text}>{todo.text}</li>)}</ul>
 
             <form>
-                <input onChange={(e) => setInput(e.target.value)} type="text"/>
-                <button onClick={(e) => {
-                    e.preventDefault()
-                    dispatch(addTodo(input))}}>Add Todo</button>
+                <input value={input} onChange={(e) => setInput(e.target.value)} type="text"/>
+                <button onClick={handleClick}>Add Todo</button>
             </form>
         </>
     )
