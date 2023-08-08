@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export default function ToDoList() {
     const todos = useSelector((state) => state.todos) //getting state from redux store
-    console.log(todos);
 
     const dispatch = useDispatch()
 

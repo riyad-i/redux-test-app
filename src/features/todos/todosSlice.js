@@ -1,6 +1,6 @@
 
 import { createSlice } from "@reduxjs/toolkit";
-
+import { nanoid } from "@reduxjs/toolkit";
 
 export const todosSlice = createSlice({
     name: 'todos',
@@ -11,7 +11,7 @@ export const todosSlice = createSlice({
     reducers: {
         addTodo: (state, action) => {
             const {payload} = action
-            state.push({id : payload,
+            state.push({id : nanoid(),
                 text:payload,
                 completed: false})
         }
